@@ -1,0 +1,83 @@
+body {
+  overflow: hidden;
+}
+.modalHistory-container {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0 20px;
+    width: 100%;
+
+    transform: translate(100%, 0);    
+    will-change: transform;
+}
+  .modalHistory-container.animated {
+    transition: .3s ease;    
+  }
+  .modalHistory-container.slide-in {
+    transform: translate(0, 0);
+  }
+
+
+html.ios .modalHistory-container {
+    padding-bottom: 80px;
+}
+  .modalHistory-container.transtition {
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    transition: .3s ease;
+  }
+  .modalHistory-container._opened {
+    transform: translate(0, 0);
+  }
+  .modalHistory-container .back_link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2em;
+  }
+    .modalHistory-container .back_link i {
+      color: #444;
+    }
+  .modalHistory-container .modal_content {
+
+  }
+
+  .modalHistory-container .loading_overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, .4);
+    overflow: hidden;
+
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+  }
+    .modalHistory-container .loading_overlay i {
+      font-size: 30px;
+      color: #247c9c;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 1em;
+      height: 1em;
+    }
+
+.modalHistory-container.citrus-loading .loading_overlay {
+  opacity: 1;
+  pointer-events: all;
+}

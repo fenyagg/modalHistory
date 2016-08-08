@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>modalHistory jquery plugin</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="../dist/modalHistory.css">
+	<script src="../dist/modalHistory.js"></script>
+
+	<link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <script>
+        $(function() {
+            $(".modalHistory").modalHistory();
+        });
+    </script>
+    
+	<div class="container">
+		<h1>modalHistory Demo</h1>
+
+		<h2>Выберите способ доставки</h2>
+
+		<div class="order_list">
+            <input type="radio" name="delivery" id="delivery1">
+            <div class="order_it">
+                <label for="delivery1" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery1" class="order_it_col _center">
+                    <span class="order_it_title">Забрать на складе</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">бесплатно</span>   <span class="descr_it">сейчас</span> <span class="descr_it"><i class="fa fa-circle color-orange" aria-hidden="true"></i> Медведково - 550 м</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="modal/modal1.html" class="order_it_col _link-more modalHistory">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery2">
+            <div class="order_it">
+                <label for="delivery2" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery2" class="order_it_col _center">
+                    <span class="order_it_title">Курьер</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">231 руб.</span>   <span class="descr_it">1-3 дня</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery3">
+            <div class="order_it">
+                <label for="delivery3" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery3" class="order_it_col _center">
+                    <span class="order_it_title">Почта России</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">208 руб.</span>   <span class="descr_it">3-5 дней</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery4">
+            <div class="order_it">
+                <label for="delivery4" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery4" class="order_it_col _center">
+                    <span class="order_it_title">шоссу Энтузиастов, 13</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">146 руб.</span>   <span class="descr_it">1-2 дня</span> <span class="descr_it"><i class="fa fa-circle color-yellow" aria-hidden="true"></i> Авиамоторная - 550 м</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="modal/delivery_about1.php" class="order_it_col _link-more modalHistory">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a><!-- .order_it_col -->
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery5">
+            <div class="order_it">
+                <label for="delivery5" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery5" class="order_it_col _center">
+                    <span class="order_it_title">3-й Автозаводской проезд, 4</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">146 руб.</span>   <span class="descr_it">1-2 дня</span> <span class="descr_it"><i class="fa fa-circle color-green" aria-hidden="true"></i> Автозаводская - 1,2 км</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="javascript: void(0);" class="order_it_col _link-more">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a><!-- .order_it_col -->
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery6">
+            <div class="order_it">
+                <label for="delivery6" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery6" class="order_it_col _center">
+                    <span class="order_it_title">ТЦ "Автозаводской", улица Мастеркова, 4</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">146 руб.</span>   <span class="descr_it">1-2 дня</span> <span class="descr_it"><i class="fa fa-circle color-green" aria-hidden="true"></i> Автозаводская - 50 м</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="javascript: void(0);" class="order_it_col _link-more">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a><!-- .order_it_col -->
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery7">
+            <div class="order_it">
+                <label for="delivery7" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery7" class="order_it_col _center">
+                    <span class="order_it_title">Профсоюзная улица, 3, офис 120</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">146 руб.</span>   <span class="descr_it">1-2 дня</span> <span class="descr_it"><i class="fa fa-circle color-orange" aria-hidden="true"></i> Академическая  - 600 м</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="javascript: void(0);" class="order_it_col _link-more">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a><!-- .order_it_col -->
+            </div><!-- .order_it -->
+
+            <input type="radio" name="delivery" id="delivery8">
+            <div class="order_it">
+                <label for="delivery8" class="order_it_col _radio">
+                    <i class="radio-icon"></i>
+                </label>
+                <label for="delivery8" class="order_it_col _center">
+                    <span class="order_it_title">Профсоюзная улица, 2/22</span>
+                    <span class="order_it_descr">
+                        <span class="descr_it">146 руб.</span>   <span class="descr_it">1-2 дня</span> <span class="descr_it"><i class="fa fa-circle color-orange" aria-hidden="true"></i> Академическая - 1,3 км</span>
+                    </span><!-- .order_it_descr -->
+                </label>
+                <a href="javascript: void(0);" class="order_it_col _link-more">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a><!-- .order_it_col -->
+            </div><!-- .order_it -->
+
+        </div>
+	</div>
+
+	
+</body>
+</html>

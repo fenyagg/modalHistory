@@ -1,47 +1,55 @@
 
 
 ;(function($) {
-
-
-	/*$.modalHistory = {
+	$.modalHistory = {
 		arModals: [],
-		
-	}*/
-	var arModals= [];
-	$.fn.modalHistory = function ( params ) {
-		var template = 	'<div class="modal-inner">'+
-							'<a href="javascript:void(0);" class="modal-close">< Вернуться</a>'+
-							'<div class="modal-content"></div>'+
-						'</div>';
-		var	params = $.extend( {
-						container: "body",
-						wrapperClass: '',
-						template: template,
-		                callbacs: {
-		                    beforeOpen: function ($modal) {
-		                        $(".container").addClass('overflow');
-		                    },
-		                    afterLoad: function ($modal, data) {},
-		                    beforeClose: function () {
-		                    	$(".container").removeClass('overflow');
-		                    },
-		                },
-		            }, params);
-
-		function open ( link ) {
-			if( !link ) {console.error("modalHistory: пустой аргумент link"); return;}
+        params: {
+            template:   '<div class="modal-inner">'+
+                            '<a href="javascript:void(0);" class="modalHistory-close">< Вернуться</a>'+
+                            '<div class="modal-content"></div>'+
+                        '</div>',
+            container: "body",
+            wrapperClass: '',
+            cache: true,
+            callbacs: {
+                beforeOpen: function ($modal) {
+                    $(".container").addClass('overflow');
+                },
+                afterLoad: function ($modal, data) {},
+                beforeClose: function () {
+                    $(".container").removeClass('overflow');
+                },
+            },
+        },
+        animate: {
+            in: function ($modal) {
+                $modal.addClass('slide-in');
+            },
+            out: function ($modal) {
+                 $modal.removeClass('slide-in');
+            }
+        },
+        open: function ( link, params) {
+            if( !link ) {console.error("modalHistory: пустой аргумент link"); return;}
+            var params = params || this.params;
 
             //добавляем в массив модальное окно
-            arModals.push(link);
-            var count = arModals.length;
+
+            var count = this.arModals.push({
+                            "link": link
+                        });
+            var modalObj = this.arModals[count-1];
 
             //формируем модальное окно
             $(params.container)
-            	.append('<div class="modalHistory-container modal-'+count+" "+params.wrapperClass+'">'+template+'</div>');
+                .append('<div class="modalHistory-container modal-'+count+" "+params.wrapperClass+'">'+params.template+'</div>');
 
             var $modal = $(".modalHistory-container.modal-"+count); 
-            $modal.addClass('animated');
-            $modal.addClass('slide-in');
+            this.animate.in($modal);
+
+            $modal.find(".modalHistory-close").attr("href", link);
+
+            modalObj.$modal = $modal;
 
             params.callbacs.beforeOpen($modal);
             
@@ -49,21 +57,45 @@
                 .done(function(data) {
                     params.callbacs.afterLoad($modal, data);
                     if(data) { 
-                    	$modal.find(".modal-content").html(data);
+                        $modal.find(".modal-content").html(data);
+                        if(params.cache) modalObj.data = data;
                     }
                 })
                 .fail(function() {
                    console.log(error);
-                });           
-		}
+                });    
+        },
+        close: function (link) {
+            if( !link ) {console.error("modalHistory: пустой аргумент link"); return;}
+            var modalHistory = $.modalHistory;
 
-        
+            var arModals = $.modalHistory.arModals.filter(function(modal) {
+                return modal.link === link;
+            });
+            arModals.forEach(function(el) {
+                modalHistory.animate.out(el.$modal);
+            });
+        },
+        init: function () {
+            $(document).on('click', '.modalHistory-close', function(event) {
+                event.preventDefault();
+                var href = $(this).attr("href");
+                if ( !href.length ) {console.log("modalHistory: пустой href у ссылки .modalHistory-close"); return;};
+
+                $.modalHistory.close(href);
+            });
+        }
+    }
+    $.modalHistory.init();
+
+	$.fn.modalHistory = function ( params ) {
+		var	params = $.extend( $.modalHistory.params, params);        
 
 		this.each(function(index, el) {
 			var $link = $(this);
 			$link.on('click', function(event) {
 				event.preventDefault();
-				open($link.attr("href"));
+				$.modalHistory.open($link.attr("href"), params);
 			});
 		});
 	}
